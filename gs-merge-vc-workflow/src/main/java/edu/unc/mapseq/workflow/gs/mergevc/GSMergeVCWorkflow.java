@@ -229,7 +229,7 @@ public class GSMergeVCWorkflow extends AbstractSequencingWorkflow {
             builder.addArgument(GATKVariantAnnotatorCLI.VCF, picardSortVCFOutput.getAbsolutePath())
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "FisherStrand").addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "QualByDepth")
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "ReadPosRankSumTest")
-                    .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "DepthPerAlleleBySample")
+                    // .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "DepthPerAlleleBySample")
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "HomopolymerRun")
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "SpanningDeletions")
                     .addArgument(GATKVariantAnnotatorCLI.BAM, mergeBAMFilesOut.getAbsolutePath())
