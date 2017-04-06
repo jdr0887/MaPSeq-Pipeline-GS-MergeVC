@@ -1,0 +1,7 @@
+edu.unc.mapseq.commands.gs.mergevc
+edu.unc.mapseq.commons.gs.mergevc
+edu.unc.mapseq.executor.gs.mergevc
+edu.unc.mapseq.messaging.gs.mergevc
+edu.unc.mapseq.workflow.gs.mergevc
+edu.unc.mapseq.ws.gs.mergevc
+edu.unc.mapseq.ws.gs.mergevc.impl
