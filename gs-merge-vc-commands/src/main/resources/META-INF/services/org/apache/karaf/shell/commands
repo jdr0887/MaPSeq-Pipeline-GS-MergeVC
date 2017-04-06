@@ -1,4 +1,0 @@
-edu.unc.mapseq.commands.gs.mergevc.RegisterToIRODSAction
-edu.unc.mapseq.commands.gs.mergevc.RegisterAllToIRODSAction
-edu.unc.mapseq.commands.gs.mergevc.RunWorkflowAction
-edu.unc.mapseq.commands.gs.mergevc.SaveMarkDuplicatesAttributesAction
