@@ -1,13 +1,61 @@
 digraph G {
-  PicardMergeSAMCLI_1 [ label="PicardMergeSAMCLI_1" ];
-  SAMToolsIndexCLI_2 [ label="SAMToolsIndexCLI_2" ];
-  ZipCLI_3 [ label="ZipCLI_3" ];
-  SAMToolsDepthCLI_4 [ label="SAMToolsDepthCLI_4" ];
-  PicardCollectHsMetricsCLI_5 [ label="PicardCollectHsMetricsCLI_5" ];
-  FreeBayesCLI_6 [ label="FreeBayesCLI_6" ];
-  PicardSortVCFCLI_7 [ label="PicardSortVCFCLI_7" ];
-  GATKVariantAnnotatorCLI_8 [ label="GATKVariantAnnotatorCLI_8" ];
-  RemoveCLI_9 [ label="RemoveCLI_9" ];
+  PicardMergeSAMCLI_1 [ label="PicardMergeSAMCLI_1
+--sortOrder coordinate
+--output <subjectName>.merged.bam
+--input <input>.bam
+" ];
+  SAMToolsIndexCLI_2 [ label="SAMToolsIndexCLI_2
+--input <subjectName>.merged.bam
+--output <subjectName>.merged.bai
+" ];
+  ZipCLI_3 [ label="ZipCLI_3
+--workDir <workdirectory>
+--entry <subjectName>.merged.bam
+--entry <subjectName>.merged.bai
+--output <subjectName>.merged.zip
+" ];
+  SAMToolsDepthCLI_4 [ label="SAMToolsDepthCLI_4
+--bam <subjectName>.merged.bam
+--output <subjectName>.merged.depth.txt
+--bed <localBed>
+--baseQuality 20
+--mappingQuality 20
+" ];
+  PicardCollectHsMetricsCLI_5 [ label="PicardCollectHsMetricsCLI_5
+--input <subjectName>.merged.bam
+--output <subjectName>.merged.hs.metrics
+--referenceSequence <referenceSequence>
+--baitIntervals <baitIntervalList>
+--targetIntervals <targetIntervalList>
+" ];
+  FreeBayesCLI_6 [ label="FreeBayesCLI_6
+--genotypeQualities
+--reportMonomorphic
+--bam <subjectName>.merged.bam
+--vcf <subjectName>.merged.fb.vcf
+--fastaReference <referenceSequence>
+--targets <globalBed>
+" ];
+  PicardSortVCFCLI_7 [ label="PicardSortVCFCLI_7
+--input <subjectName>.merged.fb.vcf
+--output <subjectName>.merged.fb.sorted.vcf
+" ];
+  GATKVariantAnnotatorCLI_8 [ label="GATKVariantAnnotatorCLI_8
+--vcf <subjectName>.merged.fb.sorted.vcf
+--annotation FisherStrand
+--annotation QualByDepth
+--annotation ReadPosRankSumTest
+--annotation HomopolymerRun
+--annotation SpanningDeletions
+--bam <subjectName>.merged.bam
+--referenceSequence <referenceSequence>
+--out <subjectName>.merged.fb.sorted.va.vcf
+--phoneHome NO_ET
+" ];
+  RemoveCLI_9 [ label="RemoveCLI_9
+--file <subjectName>.merged.fb.vcf
+--file <subjectName>.merged.fb.sorted.vcf
+" ];
   PicardMergeSAMCLI_1 -> SAMToolsIndexCLI_2;
   SAMToolsIndexCLI_2 -> ZipCLI_3;
   SAMToolsIndexCLI_2 -> SAMToolsDepthCLI_4;
