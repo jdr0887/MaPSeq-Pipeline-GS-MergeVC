@@ -2,13 +2,13 @@
  <parent>
   <groupId>edu.unc.mapseq.pipelines</groupId>
   <artifactId>gs-merge-vc</artifactId>
-  <version>0.6.51-SNAPSHOT</version>
+  <version>0.6.51</version>
  </parent>
  <name>MaPSeq :: Pipelines :: GS :: Merge VC :: Workflow</name>
  <modelVersion>4.0.0</modelVersion>
  <groupId>edu.unc.mapseq.pipelines.gs-merge-vc</groupId>
  <artifactId>gs-merge-vc-workflow</artifactId>
- <version>0.6.51-SNAPSHOT</version>
+ <version>0.6.51</version>
  <packaging>bundle</packaging>
   <properties>
     <maven.site.plugin.skip>true</maven.site.plugin.skip>    
