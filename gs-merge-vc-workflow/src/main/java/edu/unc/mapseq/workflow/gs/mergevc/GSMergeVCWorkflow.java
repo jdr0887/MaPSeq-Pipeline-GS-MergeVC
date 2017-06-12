@@ -233,8 +233,7 @@ public class GSMergeVCWorkflow extends AbstractSequencingWorkflow {
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "HomopolymerRun")
                     .addArgument(GATKVariantAnnotatorCLI.BAM, mergeBAMFilesOut.getAbsolutePath())
                     .addArgument(GATKVariantAnnotatorCLI.REFERENCESEQUENCE, referenceSequence)
-                    .addArgument(GATKVariantAnnotatorCLI.OUT, gatkVariantAnnotatorOutput.getAbsolutePath())
-                    .addArgument(GATKVariantAnnotatorCLI.PHONEHOME, GATKPhoneHomeType.NO_ET.toString());
+                    .addArgument(GATKVariantAnnotatorCLI.OUT, gatkVariantAnnotatorOutput.getAbsolutePath());
             CondorJob gatkVCFJob = builder.build();
             logger.info(gatkVCFJob.toString());
             graph.addVertex(gatkVCFJob);
