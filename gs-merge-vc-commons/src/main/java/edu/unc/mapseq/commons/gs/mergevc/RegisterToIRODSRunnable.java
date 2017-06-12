@@ -124,6 +124,7 @@ public class RegisterToIRODSRunnable implements Runnable {
             if (StringUtils.isEmpty(referenceSequence)) {
                 throw new WorkflowException("empty referenceSequence");
             }
+            
             if (StringUtils.isEmpty(subjectMergeHome)) {
                 throw new WorkflowException("empty subjectMergeHome");
             }
@@ -238,7 +239,7 @@ public class RegisterToIRODSRunnable implements Runnable {
             attributeListWithJob.add(new ImmutablePair<String, String>("MaPSeqJobName", GATKVariantAnnotator.class.getSimpleName()));
             attributeListWithJob.add(new ImmutablePair<String, String>("MaPSeqMimeType", MimeType.TEXT_VCF.toString()));
             attributeListWithJob.add(new ImmutablePair<String, String>("MaPSeqReferenceSequenceFile", referenceSequence));
-            file = new File(subjectDirectory, String.format("%s.merged.fb.sorted.va.vcf", subjectName));
+            file = new File(subjectDirectory, String.format("%s.merged.fb.ps.va.vcf", subjectName));
             job = SequencingWorkflowUtil.findJob(mapseqDAOBeanService, workflowRunAttempt.getId(), GATKVariantAnnotator.class.getName(), file);
             if (job != null) {
                 attributeListWithJob.add(new ImmutablePair<String, String>("MaPSeqJobId", job.getId().toString()));
