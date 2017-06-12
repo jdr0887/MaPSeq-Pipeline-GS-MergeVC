@@ -32,7 +32,7 @@ import edu.unc.mapseq.module.core.RemoveCLI;
 import edu.unc.mapseq.module.core.ZipCLI;
 import edu.unc.mapseq.module.sequencing.freebayes.FreeBayesCLI;
 import edu.unc.mapseq.module.sequencing.gatk.GATKPhoneHomeType;
-import edu.unc.mapseq.module.sequencing.gatk.GATKVariantAnnotatorCLI;
+import edu.unc.mapseq.module.sequencing.gatk3.GATKVariantAnnotatorCLI;
 import edu.unc.mapseq.module.sequencing.picard.PicardSortVCFCLI;
 import edu.unc.mapseq.module.sequencing.picard2.PicardCollectHsMetricsCLI;
 import edu.unc.mapseq.module.sequencing.picard2.PicardMarkDuplicates;
@@ -215,7 +215,7 @@ public class GSMergeVCWorkflow extends AbstractSequencingWorkflow {
 
             // new job
             builder = SequencingWorkflowJobFactory.createJob(++count, PicardSortVCFCLI.class, attempt.getId()).siteName(siteName);
-            File picardSortVCFOutput = new File(subjectDirectory, mergeBAMFilesOut.getName().replace(".bam", ".fb.sorted.vcf"));
+            File picardSortVCFOutput = new File(subjectDirectory, mergeBAMFilesOut.getName().replace(".bam", ".fb.ps.vcf"));
             builder.addArgument(PicardSortVCFCLI.INPUT, freeBayesOutput.getAbsolutePath()).addArgument(PicardSortVCFCLI.OUTPUT,
                     picardSortVCFOutput.getAbsolutePath());
             CondorJob picardSortVCFJob = builder.build();
@@ -225,13 +225,12 @@ public class GSMergeVCWorkflow extends AbstractSequencingWorkflow {
 
             // new job
             builder = SequencingWorkflowJobFactory.createJob(++count, GATKVariantAnnotatorCLI.class, attempt.getId()).siteName(siteName);
-            File gatkVariantAnnotatorOutput = new File(subjectDirectory, mergeBAMFilesOut.getName().replace(".bam", ".fb.sorted.va.vcf"));
+            File gatkVariantAnnotatorOutput = new File(subjectDirectory, mergeBAMFilesOut.getName().replace(".bam", ".fb.ps.va.vcf"));
             builder.addArgument(GATKVariantAnnotatorCLI.VCF, picardSortVCFOutput.getAbsolutePath())
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "FisherStrand").addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "QualByDepth")
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "ReadPosRankSumTest")
-                    // .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "DepthPerAlleleBySample")
+                    .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "DepthPerAlleleBySample")
                     .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "HomopolymerRun")
-                    .addArgument(GATKVariantAnnotatorCLI.ANNOTATION, "SpanningDeletions")
                     .addArgument(GATKVariantAnnotatorCLI.BAM, mergeBAMFilesOut.getAbsolutePath())
                     .addArgument(GATKVariantAnnotatorCLI.REFERENCESEQUENCE, referenceSequence)
                     .addArgument(GATKVariantAnnotatorCLI.OUT, gatkVariantAnnotatorOutput.getAbsolutePath())
