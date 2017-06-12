@@ -31,11 +31,10 @@ import edu.unc.mapseq.dao.model.WorkflowRunAttempt;
 import edu.unc.mapseq.module.core.RemoveCLI;
 import edu.unc.mapseq.module.core.ZipCLI;
 import edu.unc.mapseq.module.sequencing.freebayes.FreeBayesCLI;
-import edu.unc.mapseq.module.sequencing.gatk.GATKPhoneHomeType;
 import edu.unc.mapseq.module.sequencing.gatk3.GATKVariantAnnotatorCLI;
 import edu.unc.mapseq.module.sequencing.picard.PicardSortVCFCLI;
+import edu.unc.mapseq.module.sequencing.picard2.PicardAddOrReplaceReadGroups;
 import edu.unc.mapseq.module.sequencing.picard2.PicardCollectHsMetricsCLI;
-import edu.unc.mapseq.module.sequencing.picard2.PicardMarkDuplicates;
 import edu.unc.mapseq.module.sequencing.picard2.PicardMergeSAMCLI;
 import edu.unc.mapseq.module.sequencing.samtools.SAMToolsDepthCLI;
 import edu.unc.mapseq.module.sequencing.samtools.SAMToolsIndexCLI;
@@ -129,7 +128,7 @@ public class GSMergeVCWorkflow extends AbstractSequencingWorkflow {
                 Workflow workflow = getWorkflowBeanService().getMaPSeqDAOBeanService().getWorkflowDAO().findByName("GSAlignment").get(0);
 
                 File bamFile = SequencingWorkflowUtil.findFile(getWorkflowBeanService().getMaPSeqDAOBeanService(), sample, workflowRun, workflow,
-                        PicardMarkDuplicates.class, MimeType.APPLICATION_BAM, ".rg.md.bam");
+                        PicardAddOrReplaceReadGroups.class, MimeType.APPLICATION_BAM, ".rg.bam");
 
                 if (bamFile == null) {
                     logger.warn("No BAM File found for: {}", sample.toString());
