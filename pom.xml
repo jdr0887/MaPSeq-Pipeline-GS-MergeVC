@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.unc.mapseq.pipelines</groupId>
   <artifactId>gs-merge-vc</artifactId>
-  <version>0.6.58</version>
+  <version>0.6.59-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
     <maven.site.plugin.skip>false</maven.site.plugin.skip>    
@@ -34,7 +34,7 @@
     <url>https://github.com/jdr0887/MaPSeq-Pipeline-GS-MergeVC</url>
     <developerConnection>scm:git:git@github.com:jdr0887/MaPSeq-Pipeline-GS-MergeVC.git</developerConnection>
     <connection>scm:git:git@github.com:jdr0887/MaPSeq-Pipeline-GS-MergeVC.git</connection>
-    <tag>gs-merge-vc-0.6.58</tag>
+    <tag>HEAD</tag>
   </scm>
   <dependencyManagement>
     <dependencies>
@@ -46,17 +46,17 @@
       <dependency>
       	<groupId>edu.unc.mapseq.pipelines.gs-merge-vc</groupId>
       	<artifactId>gs-merge-vc-ws-api</artifactId>
-      	<version>0.6.58</version>
+      	<version>0.6.59-SNAPSHOT</version>
       </dependency>
       <dependency>
 	<groupId>edu.unc.mapseq.pipelines.gs-merge-vc</groupId>
 	<artifactId>gs-merge-vc-commons</artifactId>
-	<version>0.6.58</version>
+	<version>0.6.59-SNAPSHOT</version>
       </dependency>
       <dependency>
       	<groupId>edu.unc.mapseq.pipelines.gs-merge-vc</groupId>
       	<artifactId>gs-merge-vc-workflow</artifactId>
-      	<version>0.6.58</version>
+      	<version>0.6.59-SNAPSHOT</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
